@@ -5,7 +5,7 @@ class C1:
     _y = None                       # protected int y
     z = None                        # int z
     __u = None                      # private int u
-    def _m(self):                  # protected void m()
+    def _m(self):                   # protected void m()
         print("method protected void m()")
     def nilai(self):                # method cek nilai
         print("Nilai x\t:",self.x)
@@ -19,7 +19,7 @@ class C2:
     y = hasattr(o,'_y')         # check acces variable C1
     z = hasattr(o,'z')          # check acces variable C1
     u = hasattr(o,'__u')        # check acces variable C1
-    m = hasattr(o,'_m')        # check access m protected function
+    m = hasattr(o,'_m')         # check access m protected function
     def access(self):
         print("Can access o.x\t\t:",self.x)
         print("Can access o.y\t\t:",self.y)
@@ -32,13 +32,7 @@ class C3(C1):
     y = hasattr(C1,'_y')        # check acces variable C1
     z = hasattr(C1,'z')         # check acces variable C1
     u = hasattr(C1,'__u')       # check acces variable C1
-    m = hasattr(C1,'_m')       # check access m protected function
-    
-    # x = super().__getattribute__('x')
-    # y = super().__getattribute__('_y')
-    # z = super().__getattribute__('z')
-    # u = super().__getattribute__('__u')
-    # m = super().__getattribute__('__m')
+    m = hasattr(C1,'_m')        # check access m protected function
     def access(self):
         print("Can access x\t\t:",self.x)
         print("Can access y\t\t:",self.y)

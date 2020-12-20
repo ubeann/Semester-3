@@ -3,11 +3,11 @@
 import paket1    #import paket1 untuk parent class
 
 class C4(paket1.C1):
-    x = hasattr(super(paket1.C1),'x')         # check acces variable C1
-    y = hasattr(super(paket1.C1),'_y')        # check acces variable C1
-    z = hasattr(super(paket1.C1),'z')         # check acces variable C1
-    u = hasattr(super(paket1.C1),'__u')       # check acces variable C1
-    m = hasattr(super(paket1.C1),'_m')       # check access m protected function
+    x = hasattr(paket1.C1,'x')         # check acces variable C1
+    y = hasattr(paket1.C1,'_y')        # check acces variable C1
+    z = hasattr(paket1.C1,'z')         # check acces variable C1
+    u = hasattr(paket1.C1,'__u')       # check acces variable C1
+    m = hasattr(paket1.C1,'_m')       # check access m protected function
     def access(self):
         print("Can access x\t\t:",self.x)
         print("Can access y\t\t:",self.y)

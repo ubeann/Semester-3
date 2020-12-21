@@ -1,7 +1,7 @@
 # Creator:
 # @Ubeannn  | 081911633071
 import sys                  # import sys module untuk mengganti path directory
-sys.path.append("..")       # mengganti path directory supaya bisa import C1
+sys.path.append("..\\..")       # mengganti path directory supaya bisa import C1
 
 import C1       #import C1 class pada "C1.py"
 

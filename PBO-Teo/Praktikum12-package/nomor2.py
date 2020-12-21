@@ -46,10 +46,20 @@ class Math:
         # Print the cos of x radians
         print("cos()\t\t=>","Math cos value (1.72)\t\t:",lib2.cos(1.72))
 
+# class library 3 (statistics)
 class Statistics:
     def statmean(self):
         # Return the sample arithmetic mean of data
+        print("mean()\t\t=>","Statistics mean value (1,2,3,4)\t\t:",lib3.mean([1,2,3,4]))
+    def statmedian(self):
+        # Return the median (middle value) of numeric data, using the common “mean of middle two” method
+        print("median()\t=>","Statistics median value (1,2,3,4)\t:",lib3.median([1,2,3,4]))
+    def statstdev(self):
+        # Return the sample standard deviation (the square root of the sample variance)
         print()
+c = Statistics()
+c.statmean()
+c.statmedian()
 
 # b = Math()
 # b.mathsqrt()

@@ -1,9 +1,10 @@
 # Creator:
 # @Ubeannn  | 081911633071
-import sys                  # import sys module untuk mengganti path directory
-sys.path.append("..\\..")       # mengganti path directory supaya bisa import C1
+import sys, os                  # import sys, os module untuk mengganti path directory
+# mengganti path directory supaya bisa import C1
+sys.path.append(os.path.dirname(os.path.abspath(__file__))[:-1]+"1")
 
-import C1       #import C1 class pada "C1.py"
+import C1    # import C1 class pada "C1.py"
 
 class C5:
     o = C1.C1()

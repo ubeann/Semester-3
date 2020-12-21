@@ -5,6 +5,8 @@ class C1:
     _y = None                       # protected int y
     z = None                        # int z
     __u = None                      # private int u
+    def __init__(self):
+        return None
     def _m(self):                   # protected void m()
         print("method protected void m()")
     def nilai(self):                # method cek nilai

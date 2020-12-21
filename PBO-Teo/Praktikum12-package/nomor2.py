@@ -56,10 +56,50 @@ class Statistics:
         print("median()\t=>","Statistics median value (1,2,3,4)\t:",lib3.median([1,2,3,4]))
     def statstdev(self):
         # Return the sample standard deviation (the square root of the sample variance)
+        print("stdev()\t\t=>","Statistics stdev value (1,2,3,4)\t\t:",lib3.stdev([1,2,3,4]))
+    def statvarian(self):
+        # Return the sample variance of data, an iterable of at least two real-valued numbers
+        print("variance()\t=>","Statistics variance value (1,2,3,4)\t:",lib3.variance([1,2,3,4]))
+    def statpvarian(self):
+        # Return the population variance of data, a non-empty sequence or iterable of real-valued numbers
+        print("pvariance()\t=>","Statistics p.variance value (1,2,3,4)\t:",lib3.pvariance([1,2,3,4]))
+
+# class library 4 (datetime)
+class DateTime:
+    def datetoday(self):
+        # Return the current local date
+        print("today()\t\t\t=>","DateTime today value\t\t\t:",lib4.date.today())
+    def datetime(self):
+        # Return the current local datetime
+        print("datetime()\t\t=>","DateTime datetime value\t\t:",lib4.datetime.now())
+    def datectime(self):
+        # Return a string representing the date:
+        print("ctime()\t\t\t=>","DateTime ctime value\t\t\t:",lib4.datetime.today().ctime())
+    def dateisocal(self):
+        # Return a datetime corresponding to the ISO calendar date specified by year, week and day
+        print("isocalendar()\t=>","DateTime isocalendar value\t:",lib4.datetime.today().isocalendar())
+    def dateisoform(self):
+        # Return a string representing the date in ISO 8601 format
+        print("isoformat()\t\t=>","DateTime isoformat value\t\t:",lib4.date(2007,1,27).isoformat())
+
+# class library 5 (calendar)
+class Calendar:
+    def a(self):
         print()
-c = Statistics()
-c.statmean()
-c.statmedian()
+
+# d = DateTime()
+# d.datetoday()
+# d.datetime()
+# d.datectime()
+# d.dateisocal()
+# d.dateisoform()
+
+# c = Statistics()
+# c.statmean()
+# c.statmedian()
+# c.statstdev()
+# c.statvarian()
+# c.statpvarian()
 
 # b = Math()
 # b.mathsqrt()

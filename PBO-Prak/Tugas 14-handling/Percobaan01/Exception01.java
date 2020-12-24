@@ -1,6 +1,9 @@
-package Percobaan01;
+// @ubeannn
+// 081911633071
 
-// main problem (index out of bonds)
+package percobaan01;
+
+// main problem (array index out of bonds)
 
 // public class Exception {
 //     public static void main(String[] args) {

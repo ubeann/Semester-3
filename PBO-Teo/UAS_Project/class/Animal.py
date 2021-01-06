@@ -11,5 +11,5 @@ class Animal:
     def eat(self):
         print("Nyam-nyam-nyam")
     def string(self):
-        print("Name\t: ", self.name)
-        print("Age\t\t: ", self.age)
+        print("Name\t\t: ", self.name)
+        print("Age\t\t\t: ", self.age)

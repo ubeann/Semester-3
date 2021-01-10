@@ -14,7 +14,6 @@ import seaborn as sns               # Seaborn (visualization, optional), docs: h
 from sklearn.linear_model import LinearRegression           # docs: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
 from sklearn.model_selection import train_test_split        # docs: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 from sklearn import preprocessing                           # docs: https://scikit-learn.org/stable/modules/preprocessing.html
-from mlxtend.feature_selection import ColumnSelector
 
 # import data (CSV file), as much as possible code and data in the same directory
 data = pd.read_csv('cars_data.csv')
@@ -52,11 +51,9 @@ data = data.fillna('two')           # fill missing String data using value = "tw
 
 # Splitting data (80% Data Training, 20% Data Test)
 label = preprocessing.LabelEncoder()            # Creating object for labeling data (Optional)
-# x = data.iloc[:,-6:].drop(columns='price')      # take data for X-axis, exclude 'price' column
-select = ["compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg"]
-x = ColumnSelector(select)
-x = x.fit_transform(data)
-# x = x.apply(label.fit_transform)                # labeling data because data has the Strings data type
+select = ["compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg"]         # edit this depends on your columns
+x = data[select]                                # take data for X-axis depends on "select" array
+x = x.apply(label.fit_transform)                # labeling data because data has the Strings data type
 y = data['price']                               # take data for Y-axis, 'price' column
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 4)    # splitting data (x,y)
 
@@ -81,18 +78,18 @@ print("Score Model: %.2f" % test_score, '%')
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
-# do predictions using criteria
+# do predictions using criteria (edit this depends your columns)
 variable:dict = {
     "compression-ratio" : 13,
     "horsepower"        : 37,
     "peak-rpm"          : 2,
     "city-mpg"          : 8,
     "highway-mpg"       : 11,
-    "sign"              : ["compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg"]
+    "key"              : ["compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg"]
 }
 print("Variable predict:")
 sdtin = []
-for i in variable["sign"]:
+for i in variable["key"]:
     sdtin.append(variable[i])
     print("\t>",i+' =', variable[i])
 data_predict = data_reg.predict([sdtin])

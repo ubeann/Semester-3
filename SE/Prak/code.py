@@ -10,6 +10,7 @@ import numpy as np                  # NumPy, docs: https://numpy.org/doc/
 import matplotlib.pyplot as plt     # Matplotlib (plotting, optional), docs: https://matplotlib.org/
 import seaborn as sns               # Seaborn (visualization, optional), docs: https://seaborn.pydata.org/ 
 import os                           # OS (path), docs: https://docs.python.org/3/library/os.html
+import modules                      # user-defined modules
 
 # import machine learning library for predict (Scikit-learn, Machine Learning in Python)
 from sklearn.linear_model import LinearRegression           # docs: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
@@ -115,6 +116,6 @@ x_train.to_csv(path + r'\x_train.csv', index = True, index_label = 'index')     
 
 # saving dict in txt
 f = open(path + "\input-predict.txt","w")
-f.write( str(variable) )
+f.write( str(variable) + '\n\n--> ' + modules.solved)
 f.close()
 # %%

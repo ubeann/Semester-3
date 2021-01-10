@@ -9,11 +9,13 @@ import pandas as pd                 # Pandas, docs: https://pandas.pydata.org/do
 import numpy as np                  # NumPy, docs: https://numpy.org/doc/ 
 import matplotlib.pyplot as plt     # Matplotlib (plotting, optional), docs: https://matplotlib.org/
 import seaborn as sns               # Seaborn (visualization, optional), docs: https://seaborn.pydata.org/ 
+import os                           # OS (path), docs: https://docs.python.org/3/library/os.html
 
 # import machine learning library for predict (Scikit-learn, Machine Learning in Python)
 from sklearn.linear_model import LinearRegression           # docs: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
 from sklearn.model_selection import train_test_split        # docs: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 from sklearn import preprocessing                           # docs: https://scikit-learn.org/stable/modules/preprocessing.html
+from collections import defaultdict                         # docs: https://www.kite.com/python/docs/collections.defaultdict
 
 # import data (CSV file), as much as possible code and data in the same directory
 data = pd.read_csv('cars_data.csv')
@@ -50,11 +52,12 @@ data = data.fillna('two')           # fill missing String data using value = "tw
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # Splitting data (80% Data Training, 20% Data Test)
-label = preprocessing.LabelEncoder()            # Creating object for labeling data (Optional)
+# encoder_dict = defaultdict(preprocessing.LabelEncoder)                                # Creating dict for labeling data (Optional) --> remove '#' to use command
+# inverse_transform_lambda = lambda x: encoder_dict[x.name].inverse_transform(x)        # Creating command for inverse labeling (Optional) --> remove '#' to use command
 select = ["compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg"]         # edit this depends on your columns
-x = data[select]                                # take data for X-axis depends on "select" array
-x = x.apply(label.fit_transform)                # labeling data because data has the Strings data type
-y = data['price']                               # take data for Y-axis, 'price' column
+x = data[select]                                                # take data for X-axis depends on "select" array
+# x = x.apply(lambda x: encoder_dict[x.name].fit_transform(x))    # labeling data because data has the Strings data type (Optional) --> remove '#' to use command
+y = data['price']                                               # take data for Y-axis, 'price' column
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 4)    # splitting data (x,y)
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -95,4 +98,23 @@ for i in variable["key"]:
 data_predict = data_reg.predict([sdtin])
 print("Price predict:", int(round(data_predict[0],0)),"$")
 
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+# saving data in CSV
+path = os.path.dirname(os.path.abspath(__file__))+"\data"                               # path directory for save CSV file
+y_test.to_csv(path + '\y_test.csv', index = True, index_label = 'index')                # save variable y_test
+y_train.to_csv(path + '\y_train.csv', index = True, index_label = 'index')              # save variable y_train
+
+# saving file CSV for NO Labeling data
+x_test.to_csv(path + r'\x_test.csv', index = True, index_label = 'index')                # save variable x_test
+x_train.to_csv(path + r'\x_train.csv', index = True, index_label = 'index')              # save variable x_train
+
+# saving file CSV for Labeling data (remove '#' in command below to use)
+# x_test.apply(inverse_transform_lambda).to_csv(path + r'\x_test.csv', index = True, index_label = 'index')            # save variable x_test
+# x_train.apply(inverse_transform_lambda).to_csv(path + r'\x_train.csv', index = True, index_label = 'index')          # save variable x_test
+
+# saving dict in txt
+f = open(path + "\input-predict.txt","w")
+f.write( str(variable) )
+f.close()
 # %%

@@ -53,11 +53,11 @@ data = data.fillna('two')           # fill missing String data using value = "tw
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # Splitting data (80% Data Training, 20% Data Test)
-# encoder_dict = defaultdict(preprocessing.LabelEncoder)                                # Creating dict for labeling data (Optional) --> remove '#' to use command
-# inverse_transform_lambda = lambda x: encoder_dict[x.name].inverse_transform(x)        # Creating command for inverse labeling (Optional) --> remove '#' to use command
-select = ["compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg"]         # edit this depends on your columns
+encoder_dict = defaultdict(preprocessing.LabelEncoder)                                # Creating dict for labeling data (Optional) --> remove '#' to use command
+inverse_transform_lambda = lambda x: encoder_dict[x.name].inverse_transform(x)        # Creating command for inverse labeling (Optional) --> remove '#' to use command
+select = ["make","fuel-type","num-of-doors","body-style","num-of-cylinders","fuel-system","horsepower","city-mpg"]         # edit this depends on your columns
 x = data[select]                                                # take data for X-axis depends on "select" array
-# x = x.apply(lambda x: encoder_dict[x.name].fit_transform(x))    # labeling data because data has the Strings data type (Optional) --> remove '#' to use command
+x = x.apply(lambda x: encoder_dict[x.name].fit_transform(x))    # labeling data because data has the Strings data type (Optional) --> remove '#' to use command
 y = data['price']                                               # take data for Y-axis, 'price' column
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 4)    # splitting data (x,y)
 
@@ -78,18 +78,21 @@ print(data_reg.intercept_)
 
 # find out the accuracy score of the model using the testing data that has been split
 test_score = data_reg.score(x_test, y_test)
-print("Score Model: %.2f" % test_score, '%')
+print("Score Model: %.2f" % test_score, '= %.2f' % (test_score*100) ,'%')
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # do predictions using criteria (edit this depends your columns)
 variable:dict = {
-    "compression-ratio" : 13,
+    "make"              : 2,
+    "fuel-type"         : 1,
+    "num-of-doors"      : 1,
+    "body-style"        : 3,
+    "num-of-cylinders"  : 3,
+    "fuel-system"       : 5,
     "horsepower"        : 37,
-    "peak-rpm"          : 2,
     "city-mpg"          : 8,
-    "highway-mpg"       : 11,
-    "key"              : ["compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg"]
+    "key"               : ["make","fuel-type","num-of-doors","body-style","num-of-cylinders","fuel-system","horsepower","city-mpg"]
 }
 print("Variable predict:")
 sdtin = []
@@ -107,12 +110,12 @@ y_test.to_csv(path + '\y_test.csv', index = True, index_label = 'index')        
 y_train.to_csv(path + '\y_train.csv', index = True, index_label = 'index')              # save variable y_train
 
 # saving file CSV for NO Labeling data
-x_test.to_csv(path + r'\x_test.csv', index = True, index_label = 'index')                # save variable x_test
-x_train.to_csv(path + r'\x_train.csv', index = True, index_label = 'index')              # save variable x_train
+# x_test.to_csv(path + r'\x_test.csv', index = True, index_label = 'index')                # save variable x_test
+# x_train.to_csv(path + r'\x_train.csv', index = True, index_label = 'index')              # save variable x_train
 
 # saving file CSV for Labeling data (remove '#' in command below to use)
-# x_test.apply(inverse_transform_lambda).to_csv(path + r'\x_test.csv', index = True, index_label = 'index')            # save variable x_test
-# x_train.apply(inverse_transform_lambda).to_csv(path + r'\x_train.csv', index = True, index_label = 'index')          # save variable x_test
+x_test.apply(inverse_transform_lambda).to_csv(path + r'\x_test.csv', index = True, index_label = 'index')            # save variable x_test
+x_train.apply(inverse_transform_lambda).to_csv(path + r'\x_train.csv', index = True, index_label = 'index')          # save variable x_test
 
 # saving dict in txt
 f = open(path + "\input-predict.txt","w")

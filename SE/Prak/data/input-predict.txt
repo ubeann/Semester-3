@@ -1,3 +1,3 @@
-{'compression-ratio': 13, 'horsepower': 37, 'peak-rpm': 2, 'city-mpg': 8, 'highway-mpg': 11, 'key': ['compression-ratio', 'horsepower', 'peak-rpm', 'city-mpg', 'highway-mpg']}
+{'make': 2, 'fuel-type': 1, 'num-of-doors': 1, 'body-style': 3, 'num-of-cylinders': 3, 'fuel-system': 5, 'horsepower': 37, 'city-mpg': 8, 'key': ['make', 'fuel-type', 'num-of-doors', 'body-style', 'num-of-cylinders', 'fuel-system', 'horsepower', 'city-mpg']}
 
 --> Credit by Ubean | 081911633071

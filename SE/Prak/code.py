@@ -84,6 +84,7 @@ print("Score Model: %.2f" % test_score, '= %.2f' % (test_score*100) ,'%')
 
 # do predictions using criteria (edit this depends your columns)
 variable:dict = {
+    "index"             : 11,       # select first row on x_test.csv
     "make"              : 2,
     "fuel-type"         : 1,
     "num-of-doors"      : 1,
@@ -94,13 +95,36 @@ variable:dict = {
     "city-mpg"          : 8,
     "key"               : ["make","fuel-type","num-of-doors","body-style","num-of-cylinders","fuel-system","horsepower","city-mpg"]
 }
-print("Variable predict:")
+print("Variable predict (index =", str(variable["index"]) + "):")
 sdtin = []
 for i in variable["key"]:
     sdtin.append(variable[i])
     print("\t>",i+' =', variable[i])
 data_predict = data_reg.predict([sdtin])
-print("Price predict:", int(round(data_predict[0],0)),"$")
+print("Price Predict: $", int(round(data_predict[0],0)))
+print("Price Real   : $", y_test.iloc[0])
+print("-"*22, "-")
+print("Different    : $ ", y_test.iloc[0] - int(round(data_predict[0],0)))
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+# Summary of price predict
+summary = data_reg.predict(x_test).round(decimals=0, out=None)
+print("\nSummary of price predict:")
+print("-> Measures of central tendency")
+print("   Mean  :", round(np.mean(summary),2))
+print("   Median:", round(np.median(summary),2))
+print("-> Measures of dispersion")
+print("   Maximum : $", int(round(np.amax(summary),2)))
+print("   Minimum : $", int(round(np.amin(summary),2)))
+print("   Range   :", round(np.ptp(summary),2))
+print("   Varience:", round(np.var(summary),2))
+print("   Standard Deviation:", round(np.std(summary),2))
+
+
+# Summary of analyzing predict
+print("\nSummary of analyzing predict:")
+modules.regression_results(y_test, summary)
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 

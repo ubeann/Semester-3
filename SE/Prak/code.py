@@ -134,12 +134,9 @@ print("   Varience:", round(np.var(summary),2))
 print("   Standard Deviation:", round(np.std(summary),2))
 
 # Differ price real and predict
-# a = y_test.describe()
 print("\nDiffer price real and predict:")
-print("-> Total Data :", summary.shape[0])
-print("-> Mean Differ:", abs(round((round(np.mean(summary),2) - round(np.mean(y_test),2))/summary.shape[0],2)))
-
-
+print("-> Total Data    :", summary.shape[0])
+print("-> Mean Differ   : $", abs(round((round(np.mean(summary),2) - round(np.mean(y_test),2))/summary.shape[0],2)))
 
 # Summary of analyzing predict
 print("\nSummary of analyzing predict:")

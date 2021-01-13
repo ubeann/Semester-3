@@ -108,6 +108,18 @@ print("Different    : $ ", y_test.iloc[0] - int(round(data_predict[0],0)))
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
+# Summary of price Real
+print("\nSummary of price real:")
+print("-> Measures of central tendency")
+print("   Mean  :", round(np.mean(y_test),2))
+print("   Median:", round(np.median(y_test),2))
+print("-> Measures of dispersion")
+print("   Maximum : $", int(round(np.amax(y_test),2)))
+print("   Minimum : $", int(round(np.amin(y_test),2)))
+print("   Range   :", round(np.ptp(y_test),2))
+print("   Varience:", round(np.var(y_test),2))
+print("   Standard Deviation:", round(np.std(y_test),2))
+
 # Summary of price predict
 summary = data_reg.predict(x_test).round(decimals=0, out=None)
 print("\nSummary of price predict:")
@@ -120,6 +132,13 @@ print("   Minimum : $", int(round(np.amin(summary),2)))
 print("   Range   :", round(np.ptp(summary),2))
 print("   Varience:", round(np.var(summary),2))
 print("   Standard Deviation:", round(np.std(summary),2))
+
+# Differ price real and predict
+# a = y_test.describe()
+print("\nDiffer price real and predict:")
+print("-> Total Data :", summary.shape[0])
+print("-> Mean Differ:", abs(round((round(np.mean(summary),2) - round(np.mean(y_test),2))/summary.shape[0],2)))
+
 
 
 # Summary of analyzing predict

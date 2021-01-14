@@ -1,5 +1,5 @@
-# Nama  : Muhammad Rizal Bagus Prakasa
-# NIM   : 081911633071
+# Nama  : M. Syahrul A
+# NIM   : 081911633037
 # Tgl   : 10 Januari 2021
 
 # import sys, os module for add path directory
@@ -39,7 +39,7 @@ object3.describe()                          # Running describe function in "PBO"
 print('-'*40)
 ###################################################################################################################
 print("Create by:".center(40))
-print("Nama\t:","xxxxxxxxxxx")
-print("NIM\t\t:",'0819116330XX')
+print("Nama\t:","M. Syahrul A")
+print("NIM\t\t:",'081911633037')
 print("Tgl\t\t:", '10 Januari 2021')
 print('-'*40)

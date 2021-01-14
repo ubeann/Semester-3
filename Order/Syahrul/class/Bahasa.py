@@ -1,5 +1,5 @@
-# Nama  : Muhammad Rizal Bagus Prakasa
-# NIM   : 081911633071
+# Nama  : M. Syahrul A
+# NIM   : 081911633037
 # Tgl   : 10 Januari 2021
 
 from Kelas import Kelas   # import parent class

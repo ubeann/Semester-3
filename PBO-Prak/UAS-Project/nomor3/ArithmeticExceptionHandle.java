@@ -1,5 +1,5 @@
 // By @Ubean 081911633071
-package nomor3;;
+package nomor3;
 
 public class ArithmeticExceptionHandle {
     public static void main(String[] args) {

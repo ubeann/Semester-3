@@ -1,0 +1,22 @@
+public class ReadFile {
+    public static void main(String args[]) { 
+        File file = new File("Data.txt"); 
+        BufferedReader fileReader;
+        fileReader = new BufferedReader(new FileReader(file));
+        while(true){
+            String line = fileReader.readLine(); 
+            if (line == null) break ; 
+            System.out.println(line);
+        }
+    }
+}
+
+1) apakah program termasuk unchecked exceptions atau checked exceptions?
+   Kode atau program di atas merupakan jenis kode "Checked exceptions" dikarenakan error tersebut akan dicek saat "compile time"
+   sehingga jika tidak diberikan exceptions program atau kode tersebut tidak akan dapat dicompile ataupun dijalankan (compilation error).
+2) exception disebabkan oleh apa?
+   Exception pada program atau kode yang kita jalankan terjadi pada IOException atau IO Error atau lebih spesifiknya pada bagian
+   FileNotFoundException (subclass dari IOException) atau "Error saat file tidak ditemukan". Hal ini disebabkan pada baris kode 
+   nomor 3 yakni "File file = new File("Data.txt");", di saat program akan membuka file "Data.txt" program tidak menemukan file
+   dengan nama tersebut sehingga akan terjadi "error file not found" atau IOException (Input Output Error). Error ini juga akan
+   dicek saat "compile time" sehingga sebelum program berjalan akan ada informasi error tersebut jika terjadi.
